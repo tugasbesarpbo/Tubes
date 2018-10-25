@@ -42,6 +42,8 @@ public class MenuLogin extends JFrame {
 
     public static void main(String[] args) {
         System.out.println("Test Git Hub");
+        System.out.println("Test Git Hub 2");
+        
         new MenuLogin().setVisible(true);
 
     }
