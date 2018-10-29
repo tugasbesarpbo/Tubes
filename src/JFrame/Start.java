@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -63,10 +64,10 @@ public class Start extends JFrame {
 //        background.add(lblIcon);
         pnlPanel2 = new JPanel();
         pnlPanel2.setSize(210, 90);
-        pnlPanel2.setLocation(50, 400);
-        btnSubmit3 = new JButton("");
-        btnSubmit3.setPreferredSize(new Dimension(100, 100));
-        btnSubmit3.setIcon(new ImageIcon(resizeImage("img/login.jpg")));
+        pnlPanel2.setLocation(50, 275);
+        btnSubmit3 = new JButton();
+        btnSubmit3.setPreferredSize(new Dimension(100, 80));
+        btnSubmit3.setIcon(new ImageIcon(resizeImage("img/login.png")));
         btnSubmit3.addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
@@ -83,17 +84,34 @@ public class Start extends JFrame {
         pnlPanel2.add(btnSubmit3);
 
         btnSubmit2 = new JButton("");
-        btnSubmit2.setPreferredSize(new Dimension(100, 100));
-        btnSubmit2.setIcon(new ImageIcon(resizeImage("img/register.jpg")));
+        btnSubmit2.setPreferredSize(new Dimension(100, 80));
+        btnSubmit2.setIcon(new ImageIcon(resizeImage("img/register.png")));
         pnlPanel2.add(btnSubmit2);
         add(pnlPanel2);
 
         pnlPanel3 = new JPanel();
-        pnlPanel3.setSize(100, 90);
-        pnlPanel3.setLocation(100, 300);
+        pnlPanel3.setSize(100, 80);
+        pnlPanel3.setLocation(185, 475);
         btnSubmit = new JButton("");
-        btnSubmit.setPreferredSize(new Dimension(100, 100));
-        btnSubmit.setIcon(new ImageIcon(resizeImage("img/play_button.png")));
+        btnSubmit.setPreferredSize(new Dimension(100, 80));
+        btnSubmit.setIcon(new ImageIcon(resizeImage("img/exit.png")));
+        btnSubmit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                int x = JOptionPane.showConfirmDialog(null,
+                        "Are you sure you want to exit ?", "",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (x == JOptionPane.YES_OPTION) {
+                    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                    setVisible(false);
+                    System.exit(0);
+                } else {
+                    setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                }
+            }
+
+        });
         pnlPanel3.add(btnSubmit);
         add(pnlPanel3);
 //        btnSubmit = new JButton("");
