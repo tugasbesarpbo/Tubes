@@ -14,6 +14,11 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -66,6 +71,75 @@ public class MenuLogin extends JFrame {
         pnlPanel2.add(txtText2);
         btnSubmit3 = new JButton("Submit");
         btnSubmit3.setPreferredSize(new Dimension(100, 30));
+        btnSubmit3.addMouseListener(new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+                onClickBtnSubmit(e);
+            }
+
+            public void onClickBtnSubmit(MouseEvent e) {
+                user = txtText1.getText();
+                pass = txtText2.getText();
+                txtText1.setText("");
+                txtText2.setText("");
+
+                boolean status;
+                String dbURL = "jdbc:mysql://localhost:3306/data";
+                String username = "root";
+                String pwd = "";
+                Connection dbCon = null;
+                //bangun koneksi ke DB
+                try {
+                    dbCon = DriverManager.getConnection(dbURL, username, pwd);
+                    System.out.println("Koneksi ke DB Berhasil.");
+                } catch (SQLException ex) {
+                    System.out.println("Gagal koneksi ke DB : " + ex.getMessage());
+                }
+
+                String sql = "SELECT username , password FROM user WHERE username = " + user + " AND password = " + pass;
+
+                try {
+                    Statement stmt = dbCon.createStatement();
+                    ResultSet rs = stmt.executeQuery(sql);
+//                    int rowFound = 0;
+//                    //cek banyak record 
+//                    if (rs.last()) {
+//                        rowFound = rs.getRow();
+//                    }
+//                    // geser pointer ke posisi BEFORE-OF-RESULT
+//                    System.out.println(rowFound + " record(s) found .");
+                    rs.beforeFirst();
+                    String username_db = rs.getString(1);
+                    String password_db = rs.getString(2);
+                    if (username_db.equals(user) && password_db.equals(pass)) {
+                        status = true;
+                    }
+
+                    if (status = true) {
+                        //kalau username dan password benar langsung ke gamenya 
+                        //new Home().setVisible(true);
+                        setVisible(false);
+                    } else {
+                        // kasih notif salah pass atau username
+                    }
+
+                } catch (SQLException ex) {
+                    System.out.println("Gagal eksekusi SQL : " + ex.getMessage());
+
+                }
+
+                //tutup DB
+                if (dbCon != null) {
+                    try {
+                        dbCon.close();
+                        System.out.println("Koneksi DB ditutup");
+                    } catch (SQLException ex) {
+                        System.out.println("Koneksi DB error ditutup");
+                    }
+                }
+            }
+        });
+
         pnlPanel2.add(btnSubmit3);
 //        lblIcon4 = new JLabel();
 //        lblIcon4.setIcon(new ImageIcon(resizeBackground("img/background.jpg")));
@@ -92,7 +166,7 @@ public class MenuLogin extends JFrame {
 
         });
         pnlPanel3.add(btnSubmit);
-        
+
         add(pnlPanel1);
         add(pnlPanel2);
         add(pnlPanel3);
@@ -139,5 +213,7 @@ public class MenuLogin extends JFrame {
     private JButton btnSubmit3;
     private JTextField txtText1;
     private JTextField txtText2;
+    private String user;
+    private String pass;
 
 }

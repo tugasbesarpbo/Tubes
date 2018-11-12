@@ -42,7 +42,7 @@ public class Start extends JFrame {
         setSize(300, 600);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-
+        this.setUndecorated(true);
 //        pnlPanel = new JPanel();
 //        pnlPanel.setSize(300, 600);
         JLabel background = new JLabel();
@@ -53,6 +53,7 @@ public class Start extends JFrame {
         pnlPanel1 = new JPanel();
         pnlPanel1.setSize(100, 100);
         pnlPanel1.setLocation(100, 50);
+        pnlPanel1.setOpaque(false);
         lblIcon = new JLabel();
         lblIcon.setIcon(new ImageIcon(resizeImage("img/Flappy_Logo.png")));
         pnlPanel1.add(lblIcon);
@@ -65,6 +66,7 @@ public class Start extends JFrame {
         pnlPanel2 = new JPanel();
         pnlPanel2.setSize(210, 90);
         pnlPanel2.setLocation(50, 275);
+        pnlPanel2.setOpaque(false);
         btnSubmit3 = new JButton();
         btnSubmit3.setPreferredSize(new Dimension(100, 80));
         btnSubmit3.setIcon(new ImageIcon(resizeImage("img/login.png")));
@@ -87,10 +89,12 @@ public class Start extends JFrame {
         btnSubmit2.setPreferredSize(new Dimension(100, 80));
         btnSubmit2.setIcon(new ImageIcon(resizeImage("img/register.png")));
         pnlPanel2.add(btnSubmit2);
+        
         add(pnlPanel2);
 
         pnlPanel3 = new JPanel();
         pnlPanel3.setSize(100, 80);
+        pnlPanel3.setOpaque(false);
         pnlPanel3.setLocation(185, 475);
         btnSubmit = new JButton("");
         btnSubmit.setPreferredSize(new Dimension(100, 80));
