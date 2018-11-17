@@ -5,11 +5,24 @@
  */
 package tubes;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
+
 /**
  *
  * @author Lenovo
  */
 public class Music {
-
-    private String music;//blom tau caranya masukin music 
+    private AudioClip clip;
+	
+    public Music(String path){
+        //clip = Applet.newAudioClip(getClass().getResource(path));
+    }
+    public void play(){
+        new Thread(){
+                public void run(){
+                        clip.play();
+                }
+        }.start();
+    }
 }
