@@ -45,6 +45,15 @@ public class DataPlayer extends Tubes {
         this.pass = pass;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+    
+
     public void newPlayer() {
         DataPlayer dataPlayer = new DataPlayer();
         cekLogin = 1;
