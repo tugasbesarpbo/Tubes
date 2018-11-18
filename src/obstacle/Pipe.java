@@ -44,7 +44,7 @@ public class Pipe {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new IllegalStateException("why my image wood is null", e);
+			throw new IllegalStateException("why my image pipe is null", e);
 		}
 	}
 	
@@ -77,7 +77,7 @@ public class Pipe {
                 if(rect.x + rect.width <= 0){
                     pipes.remove(i--);
                 }
-                if(rect.x == 300){
+                if(rect.x == 30){
                     //music.play();
                     Main.score += 0.5;
                 }
