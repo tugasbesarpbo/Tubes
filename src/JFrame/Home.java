@@ -48,16 +48,16 @@ public class Home extends JFrame{
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         lblBackground = new JLabel();
-        lblBackground.setIcon(new ImageIcon(resizeImage("Res/background.jpg",screen_width,screen_height)));
+        lblBackground.setIcon(new ImageIcon(resizeImage("img/background.jpg",screen_width,screen_height)));
         this.add(lblBackground);
         
         lblLogo = new JLabel();
-        lblLogo.setIcon(new ImageIcon(resizeImage("Res/Flappy_Logo.png",270,100)));
+        lblLogo.setIcon(new ImageIcon(resizeImage("img/Flappy_Logo.png",270,100)));
         lblLogo.setBounds(70, 50, 270, 100);
         lblBackground.add(lblLogo);
         
         btnPlay = new JLabel();
-        btnPlay.setIcon(new ImageIcon(resizeImage("Res/play_button.png",120,55)));
+        btnPlay.setIcon(new ImageIcon(resizeImage("img/play_button.png",120,55)));
         btnPlay.setBounds(140, 300, 120, 55);
         btnPlay.addMouseListener(new MouseAdapter () {
             @Override

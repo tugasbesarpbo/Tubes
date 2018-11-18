@@ -30,7 +30,7 @@ public class Bird extends Rectangle{
         this.pipe = obstacle;
         
         try {
-            sheets = ImageIO.read(new File("Res/bird.png"));
+            sheets = ImageIO.read(new File("img/bird.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

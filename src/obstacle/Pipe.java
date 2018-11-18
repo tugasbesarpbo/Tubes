@@ -40,7 +40,7 @@ public class Pipe {
 		random = new Random();
 		music = new Music("/jump.wav");
 		try {
-			texture2 = ImageIO.read(new File("Res/pipe2.png"));
+			texture2 = ImageIO.read(new File("img/pipe2.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

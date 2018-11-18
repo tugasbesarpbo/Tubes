@@ -52,11 +52,11 @@ public class ChooseAnimal extends JFrame{
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         lblBackground = new JLabel();
-        lblBackground.setIcon(new ImageIcon(resizeImage("Res/background.jpg",screen_width,screen_height)));
+        lblBackground.setIcon(new ImageIcon(resizeImage("img/background.jpg",screen_width,screen_height)));
         this.add(lblBackground);
         
         iconCat = new JLabel();
-        iconCat.setIcon(new ImageIcon(resizeImage("Res/cat.png", 100, 100)));
+        iconCat.setIcon(new ImageIcon(resizeImage("img/cat.png", 100, 100)));
         iconCat.setBounds(45, 225, 100, 100);
         lblBackground.add(iconCat);
         
@@ -75,7 +75,7 @@ public class ChooseAnimal extends JFrame{
         lblBackground.add(btnCat);
         
         iconBird = new JLabel();
-        iconBird.setIcon(new ImageIcon(resizeImage("Res/bird.png", 60, 60)));
+        iconBird.setIcon(new ImageIcon(resizeImage("img/bird.png", 60, 60)));
         iconBird.setBounds(269, 234, 60, 60);
         lblBackground.add(iconBird);
         
@@ -94,7 +94,7 @@ public class ChooseAnimal extends JFrame{
         lblBackground.add(btnBird);
         
         btnOK = new JLabel();
-        btnOK.setIcon(new ImageIcon(resizeImage("Res/button_ok.png", 100, 30)));
+        btnOK.setIcon(new ImageIcon(resizeImage("img/button_ok.png", 100, 30)));
         btnOK.setBounds(150, 470, 100, 30);
         btnOK.addMouseListener(new MouseAdapter(){
             @Override

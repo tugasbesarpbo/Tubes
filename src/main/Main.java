@@ -51,7 +51,7 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
         BufferedImage sheets = null;
         
         try {
-            background = ImageIO.read(new File("Res/background.jpg"));
+            background = ImageIO.read(new File("img/background.jpg"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

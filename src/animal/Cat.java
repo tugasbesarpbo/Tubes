@@ -33,7 +33,7 @@ public class Cat extends Rectangle{
         this.pipe = obstacle;
         
         try {
-            sheets = ImageIO.read(new File("Res/cat.png"));
+            sheets = ImageIO.read(new File("img/cat.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -45,14 +45,11 @@ public class Cat extends Rectangle{
     
     public void update(){
         if (pressed) {
-            //for (int i = 0; i < 20; i++) {
-                if (y <= 0) {
-                    y = 0;
-                } else {
-                    y -= spd;
-                }
-            //}
-            //pressed = false;
+            if (y <= 0) {
+                y = 0;
+            } else {
+                y -= spd;
+            }
         } else {
             y += 4;
             if (y >= 500) {
