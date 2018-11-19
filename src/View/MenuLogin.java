@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import jframe.Home;
 import tubes.DataPlayer;
 
 /**
@@ -40,7 +41,7 @@ public class MenuLogin extends JFrame {
 
         setSize(screen_width, screen_height);
         setLocationRelativeTo(null);
-        setUndecorated(true);
+        setResizable(false);
         setTitle("Flabby Animal");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,10 +83,19 @@ public class MenuLogin extends JFrame {
 
                 List<DataPlayer> listPlayer = Dao.Connection.selectDataPlayer(user, pass);
 
+                //cek list
+                for (DataPlayer barang : listPlayer) {
+                    System.out.println(barang.getUser());
+                }
+                
                 if (listPlayer == null) {
                     //ke register
+                    new MenuRegister().setVisible(true);
+                    setVisible(false);
                 } else {
-                    //ke game 
+                    //ke game
+                    new Home().setVisible(true);
+                    setVisible(false);
                 }
 
             }

@@ -45,7 +45,7 @@ public class Start extends JFrame {
         setTitle("Flabby Animal");
         setSize(screen_width, screen_height);
         setLocationRelativeTo(null);
-        setUndecorated(true);
+        setResizable(false);
         
         JLabel background = new JLabel();
         background.setIcon(new ImageIcon(resizeImage("img/background.jpg", screen_width, screen_height)));
@@ -85,7 +85,7 @@ public class Start extends JFrame {
         background.add(pnlPanel4);
 
         pnlPanel3 = new JButton();
-        pnlPanel3.setBounds(280, 545, 120, 55);
+        pnlPanel3.setBounds(280, 520, 120, 55);
         pnlPanel3.setOpaque(false);
         pnlPanel3.setIcon(new ImageIcon(resizeImage("img/exit.png", 120, 55)));
         pnlPanel3.addMouseListener(new MouseAdapter() {

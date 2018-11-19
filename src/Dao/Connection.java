@@ -59,19 +59,21 @@ public class Connection {
         Connection conMan = new Connection();
         java.sql.Connection con = conMan.logOn();
 
-        String query = "SELECT user , pass FROM player WHERE user = " + user + " AND pass = " + pass;
-        
+        String query = "SELECT user , pass FROM player WHERE user = '" + user + "' AND pass = '" + pass + "'";
+        System.out.println(query);
+
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-                DataPlayer b = new DataPlayer();
-                b.setUser(rs.getString("user"));
-                b.setPass(rs.getString("pass"));
+            
+            rs.next();
 
-                listDataPlayer.add(b);
+            DataPlayer b = new DataPlayer();
+            b.setUser(rs.getString("user"));
+            b.setPass(rs.getString("pass"));
 
-            }
+            listDataPlayer.add(b);
+
         } catch (SQLException ex) {
             ex.printStackTrace(System.err);
         }
@@ -85,7 +87,7 @@ public class Connection {
         java.sql.Connection con = conMan.logOn();
 
         try {
-            String query = "insert into (user,pass)"
+            String query = "insert into player (user,pass)"
                     + "value ('" + b.getUser() + "','" + b.getPass() + "')";
             System.out.println(query);
             Statement st = con.createStatement();
