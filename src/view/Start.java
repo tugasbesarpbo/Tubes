@@ -26,7 +26,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-
 /**
  *
  * @author Lenovo
@@ -46,7 +45,7 @@ public class Start extends JFrame {
         setSize(screen_width, screen_height);
         setLocationRelativeTo(null);
         setResizable(false);
-        
+
         JLabel background = new JLabel();
         background.setIcon(new ImageIcon(resizeImage("img/background.jpg", screen_width, screen_height)));
         add(background);
@@ -81,7 +80,18 @@ public class Start extends JFrame {
         pnlPanel4.setBounds(230, 300, 120, 55);
         pnlPanel4.setPreferredSize(new Dimension(100, 80));
         pnlPanel4.setIcon(new ImageIcon(resizeImage("img/register.png", 120, 55)));
+        pnlPanel4.addMouseListener(new MouseAdapter() {
 
+            public void mouseClicked(MouseEvent e) {
+                onClickBtnSubmit(e);
+            }
+
+            private void onClickBtnSubmit(MouseEvent e) {
+                new MenuRegister().setVisible(true);
+                setVisible(false);
+            }
+
+        });
         background.add(pnlPanel4);
 
         pnlPanel3 = new JButton();

@@ -16,6 +16,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.Main;
 import animal.ChooseAnimal;
+import view.Start;
 
 
 /**
@@ -68,6 +69,24 @@ public class Home extends JFrame{
         });
         lblBackground.add(btnPlay);
         
+        btnExit = new JButton();
+        btnExit.setBounds(280, 520, 120, 55);
+        btnExit.setOpaque(false);
+        btnExit.setIcon(new ImageIcon(resizeImage("img/exit.png", 120, 55)));
+        btnExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                onClickBtnSubmit(e);
+            }
+
+            private void onClickBtnSubmit(MouseEvent e) {
+                new Start().setVisible(true);
+                setVisible(false);
+            }
+
+        });
+        lblBackground.add(btnExit);
+        
     }
     
     private void btnPlay () {
@@ -83,5 +102,6 @@ public class Home extends JFrame{
     private JLabel btnPlay;
     private JLabel lblLogo;
     private JLabel cat;
+    private JButton btnExit;
     //JLabel lblIcon = new JLabel();
 }

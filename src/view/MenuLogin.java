@@ -105,7 +105,7 @@ public class MenuLogin extends JFrame {
         background.add(pnlPanel2);
 
         pnlPanel3 = new JButton();
-        pnlPanel3.setBounds(280, 545, 120, 55);
+        pnlPanel3.setBounds(280, 520, 120, 55);
         pnlPanel3.setOpaque(false);
         pnlPanel3.setIcon(new ImageIcon(resizeImage("img/exit.png", 120, 55)));
         pnlPanel3.addMouseListener(new MouseAdapter() {
