@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package view;
 
 import java.awt.Dimension;
 import java.awt.Image;
@@ -81,7 +81,7 @@ public class MenuLogin extends JFrame {
                 txtText1.setText("");
                 txtText2.setText("");
 
-                List<DataPlayer> listPlayer = Dao.Connection.selectDataPlayer(user, pass);
+                List<DataPlayer> listPlayer = dao.Connection.selectDataPlayer(user, pass);
 
                 //cek list
                 for (DataPlayer barang : listPlayer) {
