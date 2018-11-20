@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Lenovo Data Player bisa ada abstract
  */
-public class DataPlayer extends Tubes {
+public class DataPlayer {
 
     public int score;
     public String user;
