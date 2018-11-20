@@ -97,7 +97,6 @@ public class MenuLogin extends JFrame {
                     new Home().setVisible(true);
                     setVisible(false);
                 }
-
             }
         });
 

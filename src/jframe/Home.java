@@ -16,6 +16,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.Main;
 import animal.ChooseAnimal;
+import tubes.DataPlayer;
 import view.Start;
 
 
