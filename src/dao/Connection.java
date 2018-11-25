@@ -66,17 +66,18 @@ public class Connection {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             
-            while (rs.next()) {
-                DataPlayer b = new DataPlayer();
-                b.setUser(rs.getString("user"));
-                b.setPass(rs.getString("pass"));
+            rs.next();
 
-                listDataPlayer.add(b);
-            }
+            DataPlayer b = new DataPlayer();
+            b.setUser(rs.getString("user"));
+            b.setPass(rs.getString("pass"));
+
+            listDataPlayer.add(b);
+
         } catch (SQLException ex) {
             ex.printStackTrace(System.err);
         }
-
+        System.out.println("");
         conMan.logOff();
         return listDataPlayer;
     }
