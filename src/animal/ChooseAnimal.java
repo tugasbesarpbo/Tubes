@@ -75,10 +75,10 @@ public class ChooseAnimal extends JFrame{
         });
         lblBackground.add(btnCat);
         
-        iconBird = new JLabel();
-        iconBird.setIcon(new ImageIcon(resizeImage("img/cat2.png", 80, 80)));
-        iconBird.setBounds(269, 234, 80, 80);
-        lblBackground.add(iconBird);
+        iconCatChristmas = new JLabel();
+        iconCatChristmas.setIcon(new ImageIcon(resizeImage("img/cat2.png", 80, 80)));
+        iconCatChristmas.setBounds(269, 234, 80, 80);
+        lblBackground.add(iconCatChristmas);
         
         btnCatChristmas = new JButton("Cat Christmas");
         btnCatChristmas.setBounds(255, 300, 100, 30);
@@ -130,7 +130,7 @@ public class ChooseAnimal extends JFrame{
     private JLabel lblBackground;
     private JLabel iconCat;
     private JButton btnCat;
-    private JLabel iconBird;
+    private JLabel iconCatChristmas;
     private JButton btnCatChristmas;
     private JLabel btnOK;
     
