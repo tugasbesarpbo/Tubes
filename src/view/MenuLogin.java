@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -89,12 +90,11 @@ public class MenuLogin extends JFrame {
                 }
                 
                 if (listPlayer == null) {
-                    //ke register
-                    new MenuRegister().setVisible(true);
-                    setVisible(false);
+                    //ulang lagi ke login form
+                    JOptionPane.showMessageDialog(null, "Wrong Username or Password ! Please try again !");
                 } else {
                     //ke game
-                    new Home().setVisible(true);
+                    new Home(user).setVisible(true);
                     setVisible(false);
                 }
             }

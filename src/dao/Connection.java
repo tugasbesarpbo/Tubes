@@ -26,7 +26,7 @@ public class Connection {
 
     public Connection() {
     }
-
+    // buat koneksi on
     public java.sql.Connection logOn() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -43,7 +43,7 @@ public class Connection {
         }
         return conn;
     }
-
+    //buat koneksi off
     public void logOff() {
         try {
             conn.close();
@@ -52,7 +52,7 @@ public class Connection {
             e.printStackTrace(System.err);
         }
     }
-
+    //select player dengan user dan pass di cek untuk login
     public static List<DataPlayer> selectDataPlayer(String user, String pass) {
         List<DataPlayer> listDataPlayer = new ArrayList<>();
 
@@ -81,7 +81,7 @@ public class Connection {
         conMan.logOff();
         return listDataPlayer;
     }
-
+    //masukan data ke database , digunakan di register
     public static void insertData(DataPlayer b) {
         Connection conMan = new Connection();
         java.sql.Connection con = conMan.logOn();
@@ -89,6 +89,24 @@ public class Connection {
         try {
             String query = "insert into player (user,pass)"
                     + "value ('" + b.getUser() + "','" + b.getPass() + "')";
+            System.out.println(query);
+            Statement st = con.createStatement();
+            boolean rs = st.execute(query);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.err);
+        }
+        conMan.logOff();
+    }
+    //update score setelah game ke DB
+     public static void updateDataScore(DataPlayer b , String user_now) {
+        Connection conMan = new Connection();
+        java.sql.Connection con = conMan.logOn();
+
+        try {
+            String query = "UPDATE player"
+                    + "SET score = " + b.getScore()
+                    + "WHERE user = ' "+user_now +" '";
             System.out.println(query);
             Statement st = con.createStatement();
             boolean rs = st.execute(query);

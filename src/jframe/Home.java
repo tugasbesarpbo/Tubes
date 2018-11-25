@@ -19,13 +19,13 @@ import animal.ChooseAnimal;
 import tubes.DataPlayer;
 import view.Start;
 
-
 /**
  *
  * @author Lenovo
  */
-public class Home extends JFrame{    
-    private Image resizeImage (String url,int x,int y) {
+public class Home extends JFrame {
+
+    private Image resizeImage(String url, int x, int y) {
         Image dimg = null;
         try {
             BufferedImage img = ImageIO.read(new File(url));
@@ -35,12 +35,13 @@ public class Home extends JFrame{
         }
         return dimg;
     }
-    
-    public Home () {
+
+    public Home(String user) {
+        user_login = user;
         initComponent();
     }
-    
-    private void initComponent () {
+
+    private void initComponent() {
         int screen_height = 600;
         int screen_width = 400;
         this.setTitle("Flappy Animal");
@@ -48,28 +49,28 @@ public class Home extends JFrame{
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         lblBackground = new JLabel();
-        lblBackground.setIcon(new ImageIcon(resizeImage("img/background.jpg",screen_width,screen_height)));
+        lblBackground.setIcon(new ImageIcon(resizeImage("img/background.jpg", screen_width, screen_height)));
         this.add(lblBackground);
-        
+
         lblLogo = new JLabel();
-        lblLogo.setIcon(new ImageIcon(resizeImage("img/Flappy_Logo.png",270,100)));
+        lblLogo.setIcon(new ImageIcon(resizeImage("img/Flappy_Logo.png", 270, 100)));
         lblLogo.setBounds(70, 50, 270, 100);
         lblBackground.add(lblLogo);
-        
+
         btnPlay = new JLabel();
-        btnPlay.setIcon(new ImageIcon(resizeImage("img/play_button.png",120,55)));
+        btnPlay.setIcon(new ImageIcon(resizeImage("img/play_button.png", 120, 55)));
         btnPlay.setBounds(140, 300, 120, 55);
-        btnPlay.addMouseListener(new MouseAdapter () {
+        btnPlay.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me) {
                 //btnNameMouseClicked();
                 btnPlay();
-            }            
+            }
         });
         lblBackground.add(btnPlay);
-        
+
         btnExit = new JButton();
         btnExit.setBounds(280, 520, 120, 55);
         btnExit.setOpaque(false);
@@ -81,28 +82,30 @@ public class Home extends JFrame{
             }
 
             private void onClickBtnSubmit(MouseEvent e) {
+                user_login = null;
                 new Start().setVisible(true);
                 setVisible(false);
             }
 
         });
         lblBackground.add(btnExit);
-        
+
     }
-    
-    private void btnPlay () {
+
+    private void btnPlay() {
         this.setVisible(false);
         new ChooseAnimal().setVisible(true);
     }
-    
+
     public static void main(String[] args) {
-        new Home().setVisible(true);
+        new Home(null).setVisible(true);
     }
-    
+
     private JLabel lblBackground;
     private JLabel btnPlay;
     private JLabel lblLogo;
     private JLabel cat;
     private JButton btnExit;
+    private String user_login;
     //JLabel lblIcon = new JLabel();
 }
