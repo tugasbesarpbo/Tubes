@@ -69,7 +69,7 @@ public class ChooseAnimal extends JFrame{
             public void mouseClicked(MouseEvent me) {
                 choose = chooseCat();
                 btnCat.setBackground(Color.cyan);
-                btnBird.setBackground(Color.LIGHT_GRAY);
+                btnCatChristmas.setBackground(Color.LIGHT_GRAY);
             }
             
         });
@@ -80,19 +80,19 @@ public class ChooseAnimal extends JFrame{
         iconBird.setBounds(269, 234, 80, 80);
         lblBackground.add(iconBird);
         
-        btnBird = new JButton("Bird");
-        btnBird.setBounds(255, 300, 100, 30);
-        btnBird.setBackground(Color.LIGHT_GRAY);
-        btnBird.addMouseListener(new MouseAdapter(){
+        btnCatChristmas = new JButton("Cat Christmas");
+        btnCatChristmas.setBounds(255, 300, 100, 30);
+        btnCatChristmas.setBackground(Color.LIGHT_GRAY);
+        btnCatChristmas.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent me) {
                 choose = chooseBird();
-                btnBird.setBackground(Color.cyan);
+                btnCatChristmas.setBackground(Color.cyan);
                 btnCat.setBackground(Color.LIGHT_GRAY);
             }
             
         });
-        lblBackground.add(btnBird);
+        lblBackground.add(btnCatChristmas);
         
         btnOK = new JLabel();
         btnOK.setIcon(new ImageIcon(resizeImage("img/button_ok.png", 100, 30)));
@@ -131,7 +131,7 @@ public class ChooseAnimal extends JFrame{
     private JLabel iconCat;
     private JButton btnCat;
     private JLabel iconBird;
-    private JButton btnBird;
+    private JButton btnCatChristmas;
     private JLabel btnOK;
     
 }

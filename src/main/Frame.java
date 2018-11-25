@@ -5,7 +5,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import animal.Bird;
 
 public class Frame extends JFrame{
 
