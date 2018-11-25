@@ -136,8 +136,8 @@ public class MenuLogin extends JFrame {
 
     public static void main(String[] args) {
         new MenuLogin().setVisible(true);
-
     }
+    
     private JLabel pnlPanel1;
     private JPanel pnlPanel2;
     private JButton pnlPanel3;

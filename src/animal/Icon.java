@@ -85,7 +85,6 @@ public class Icon extends Rectangle{
                 Main.pipe = new Pipe(80);
                 pipe = Main.pipe.pipes;
                 y = Main.HEIGHT/2;
-                Main.score = 0;
             }
             i++;
         } 

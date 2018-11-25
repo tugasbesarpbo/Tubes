@@ -20,11 +20,13 @@ import animal.Icon;
 import java.io.File;
 import obstacle.Pipe;
 import animal.ChooseAnimal;
+import dao.Connection;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import tubes.DataPlayer;
 /**
  *
  * @author Nicholas Zanardi , Christian DY, Juan Wilson , Kezia interface blom
@@ -60,13 +62,8 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
         }
         
         pipe = new Pipe(80);
-        
-        
         icon = new Icon(10, Main.HEIGHT/2, pipe.pipes);
-        System.out.println("stat1: " + icon.gameOver);
         frame = new Frame(WIDTH, HEIGHT, this);
-        
-        
     }  
 
     public synchronized void start(){
@@ -113,10 +110,16 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
                 frames = 0;
             }
         }
-        System.out.println("stat2: " + icon.gameOver);
+        
         if (icon.gameOver == true) {
-            System.out.println("masuk");
+            System.out.println("score: " + score);
+//            DataPlayer b = new DataPlayer();
+//            if () {
+//                b.setScore((int) score);
+//            }
+            //Connection.insertData(b);
             int confirm = JOptionPane.showConfirmDialog(null, "Game Over! Ulang?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            score = 0;
             
             if (confirm == JOptionPane.YES_OPTION) {
                 frame.setVisible(false);
