@@ -16,34 +16,37 @@ import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import jframe.Home;
-import animal.Bird;
-import animal.Cat;
+import animal.Icon;
 import java.io.File;
 import obstacle.Pipe;
 import animal.ChooseAnimal;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Nicholas Zanardi , Christian DY, Juan Wilson , Kezia interface blom
  * tau , mau konsul lagi
  */
 public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
-
     private static final long serialVersionUID = 3196520274556633778L;
     public static final int WIDTH = 400, HEIGHT = 600;
-    public static int up = 0;
-
-    private Thread thread;
-    private Random r;
-    public static Pipe pipe;
-    public static Bird bird;
-    public static Cat cat;
 
     private BufferedImage background= null; 
-    public static double score=0;
+    private Thread thread;
+    private Random r;
     private boolean running = false;
     private int choose = ChooseAnimal.choose;
+    
+    public static Pipe pipe;
+    public static Icon icon;
+    public static int up = 0;
+    public static double score = 0;
+    
+    public Frame frame;
+    
     public Main(){  
         r = new Random();
         addKeyListener(this);
@@ -53,19 +56,17 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
         try {
             background = ImageIO.read(new File("img/background.jpg"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
         pipe = new Pipe(80);
         
-        System.out.println("Choose : " + choose);
-        if (choose == 1) {
-             cat = new Cat(10, Main.HEIGHT/2, pipe.pipes);
-        } else if (ChooseAnimal.choose == 2) {
-            bird = new Bird(10, Main.HEIGHT/2, pipe.pipes);
-        }
-        new Frame(WIDTH, HEIGHT, this);
+        
+        icon = new Icon(10, Main.HEIGHT/2, pipe.pipes);
+        System.out.println("stat1: " + icon.gameOver);
+        frame = new Frame(WIDTH, HEIGHT, this);
+        
+        
     }  
 
     public synchronized void start(){
@@ -82,20 +83,23 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
             e.printStackTrace();
         }
     }
-    
+   
     @Override
     public void run(){
         //gameloop
         int frames = 0;
         long lastTime = System.nanoTime();
+        long timer = System.currentTimeMillis();
         double amountOFTicks = 60.0;
         double ns = 1000000000 / amountOFTicks;
         double delta = 0;
-        long timer = System.currentTimeMillis();
-        while(running){
+        
+        while(running && icon.gameOver == false){
+            
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
+            
             while(delta >= 1){
                 update();
                 render();
@@ -106,21 +110,30 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
 
             if(System.currentTimeMillis() - timer >= 1000){
                 timer += 1000;
-                //System.out.println("FPS: "+frames);
                 frames = 0;
             }
         }
-    }
-
-    private void update(){
-        pipe.update();
-        if (choose == 1) {
-            cat.update();
-        } else if (choose == 2) {
-            bird.update();
+        System.out.println("stat2: " + icon.gameOver);
+        if (icon.gameOver == true) {
+            System.out.println("masuk");
+            int confirm = JOptionPane.showConfirmDialog(null, "Game Over! Ulang?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            
+            if (confirm == JOptionPane.YES_OPTION) {
+                frame.setVisible(false);
+                new ChooseAnimal().setVisible(true);
+                icon.gameOver = false;
+            } else {
+                JOptionPane.showMessageDialog(null, "Terima kasih telah bermain!");
+                System.exit(0);
+            }
         }
     }
-
+    
+    private void update(){
+        pipe.update();
+        icon.update();
+    }
+    
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
         
@@ -140,25 +153,17 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
         g.drawString("Score : " + (int)score, 50, 50);
         
         pipe.render(g);
-        if (choose == 1) {
-            cat.render(g);
-        } else if (choose == 2) {
-            bird.render(g);
-        }
+        icon.render(g);
         g.dispose();
         bs.show();
     }
-
+    
     @Override
     public void keyPressed(KeyEvent arg0) {
         // TODO Auto-generated method stub
         if(arg0.getKeyCode()==KeyEvent.VK_SPACE){
-            if (choose == 1) {
-                cat.pressed = true;
-            } else if (choose == 2) {
-                bird.pressed = true;
-            }
-            System.out.println("press");
+            icon.pressed = true;
+            //System.out.println("press");
         }
     }
 
@@ -166,12 +171,9 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
     public void keyReleased(KeyEvent arg0) {
         // TODO Auto-generated method stub
         if(arg0.getKeyCode()==KeyEvent.VK_SPACE){
-            if (choose == 1) {
-                cat.pressed = false;
-            } else if (choose == 2) {
-                bird.pressed = false;
-            }
-            System.out.println("release");
+            icon.pressed = false;
+                
+            //System.out.println("release");
         }
     }
     
@@ -179,19 +181,13 @@ public class Main extends Canvas implements Runnable,KeyListener,MouseListener{
         // TODO Auto-generated method stub
         new Main().setVisible(true);
     }
-
+    
     @Override
     public void keyTyped(KeyEvent ke) {
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if (choose == 1) {
-            cat.pressed = true;
-        } else if (choose == 2) {
-            bird.pressed = true;
-        }
-        System.out.println("press");
     }
 
     @Override

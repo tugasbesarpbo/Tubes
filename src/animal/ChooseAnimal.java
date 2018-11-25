@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import main.Main;
 
 /**
@@ -75,8 +76,8 @@ public class ChooseAnimal extends JFrame{
         lblBackground.add(btnCat);
         
         iconBird = new JLabel();
-        iconBird.setIcon(new ImageIcon(resizeImage("img/bird.png", 60, 60)));
-        iconBird.setBounds(269, 234, 60, 60);
+        iconBird.setIcon(new ImageIcon(resizeImage("img/cat2.png", 80, 80)));
+        iconBird.setBounds(269, 234, 80, 80);
         lblBackground.add(iconBird);
         
         btnBird = new JButton("Bird");
